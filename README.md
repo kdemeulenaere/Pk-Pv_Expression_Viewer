@@ -9,9 +9,7 @@ The folder 'datasets' contains all datasets used in the script:
 - sim.txt: similarity statistics for the P. vivax - P. knowlesi orthologue pairs.
 
 The 'P. knowlesi-P. vivax Expression Viewer' App can be accessed at: XXX.
-
-In the first tab of the App, a P. vivax/P. knowlesi gene is entered, the ortholog(s) are searched, and an expression plot for the input gene + ortholog(s) is given together with similarity statistics of the expression patterns.
-
-In the second tab of the App, up to 4 P. knowlesi/P. vivax genes are entered, and one expression plot is given for all input genes together.
+- In the first tab of the App, a P. vivax/P. knowlesi gene is entered, the ortholog(s) are searched, and an expression plot for the input gene + ortholog(s) is given together with similarity statistics of the expression patterns.
+- In the second tab of the App, up to 4 P. knowlesi/P. vivax genes are entered, and one expression plot is given for all input genes together.
 
 **If you use the App or the code, please cite: De Meulenaere et al., 2025, XXX. doi: XXX.**
