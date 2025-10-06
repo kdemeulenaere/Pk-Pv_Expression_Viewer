@@ -503,6 +503,10 @@ UI <- fluidPage(
                       <li><b>DTW:</b> dynamic time warping</li>
                       <li><b>PCHIP:</b> Piecewise Cubic Hermite Interpolating Polynomial</li>
                     </ul>
+
+                    <br><br>
+                    
+                    <p>This app collects anonymous usage statistics (number of sessions and plots generated) to improve functionality. No personal data is stored.</p>
                   "),
                       
                       br(), br()
@@ -533,6 +537,7 @@ Server <- function(input, output, session) {
     counters$total_sessions <- counters$total_sessions + 1
     if (!(session$token %in% counters$unique_users)) {
       counters$unique_users <- c(counters$unique_users, session$token)
+      #session$token is a random, temporary identifier, not directly linked to a person. No IP-addresses are stored.
     }
     saveRDS(counters, counter_file_dir)
   })
@@ -716,4 +721,5 @@ Server <- function(input, output, session) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
 
