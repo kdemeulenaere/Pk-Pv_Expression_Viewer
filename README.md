@@ -5,9 +5,9 @@
 The directory `/datasets` contains all datasets used in the script:
 - `Pk_expr.txt`: *P. knowlesi* A1-H.1 expression of the 5 sampled time points, and all interpolated time points.
 - `Pv_expr.txt`: *P. vivax* smru1 expression of the 7 sampled time points, and all interpolated time points.
-- `Pk_unfiltered.txt`: all *P. knowlesi* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels)
-- `Pv_unfiltered.txt`: all *P. vivax* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels)
-- `ortho.txt`: rows represents a *P. vivax* - *P. knowlesi* orthologue pair.
+- `Pk_unfiltered.txt`: all *P. knowlesi* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels).
+- `Pv_unfiltered.txt`: all *P. vivax* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels).
+- `ortho.txt`: every row represents a *P. vivax* - *P. knowlesi* orthologue pair.
 - `sim.txt`: similarity statistics for the *P. vivax* - *P. knowlesi* orthologue pairs.
 
 The '*P. knowlesi* - *P. vivax* Expression Viewer' App can be accessed at: XXX.
