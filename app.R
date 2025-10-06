@@ -15,23 +15,26 @@ library(gridExtra)
 
 #### Import dataframes ####
 
-Pk_expr <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pk_expr.txt", check.names = FALSE)
-Pv_expr <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pv_expr.txt", check.names = FALSE)
+setwd("path_to_datasets")
+
+Pk_expr <- read.delim("Pk_expr.txt", check.names = FALSE)
+Pv_expr <- read.delim("Pv_expr.txt", check.names = FALSE)
 #Expression of all gene ID's that passed filtering (expression: TPM, log2 with pseudocount +1, Z-scored)). Genes without ortholog are present.
 
-sim <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/sim.txt")
+sim <- read.delim("sim.txt")
 #orthologous gene ID's (that passed filtering) with their similarity stats: dtw, time distance, outcome (sim/dissim)
 
-ortho <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/ortho.txt")
+ortho <- read.delim("ortho.txt")
 #orthologous gene ID's (no filtering applied)
 
-Pk_unfiltered <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pk_full.txt")
-Pv_unfiltered <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pv_full.txt")
+Pk_unfiltered <- read.delim("Pk_unfiltered.txt")
+Pv_unfiltered <- read.delim("Pv_unfiltered.txt")
 #dataframe with all Pv/Pk genes, and whether they pass the filtering rules.
 
 
 #### User stats directory ####
-counter_file_dir <- "C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/usage_counters.rds"
+setwd("path_to_counter_file")
+counter_file_dir <- "usage_counters.rds"
 
 
 #### Helper functions ####
@@ -713,3 +716,4 @@ Server <- function(input, output, session) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
