@@ -1,3 +1,5 @@
+# P. knowlesi-P. vivax Expression Viewer shiny App
+
 'app.R' contains the R code to produce a Shiny App (the 'P. knowlesi-P. vivax Expression Viewer') in which expression patterns of P. knowlesi A1-H.1 (De Meulenaere et al., 2025) and P. vivax (Zhu et al., 2016) genes can be visualised over the asexual blood stages.
 
 The folder 'datasets' contains all datasets used in the script:
