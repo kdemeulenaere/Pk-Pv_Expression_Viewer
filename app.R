@@ -9,7 +9,6 @@
 
 #### Load packages ####
 
-library(shiny)
 library(ggplot2)
 library(gridExtra)
 
@@ -721,5 +720,6 @@ Server <- function(input, output, session) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
 
 
