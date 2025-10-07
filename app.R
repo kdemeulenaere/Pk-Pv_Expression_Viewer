@@ -2,15 +2,21 @@
 
 # Author: Katlijn De Meulenaere
 
-# Script to generate a Shiny App for investigation of P. knowlesi (A1-H.1, De Meulenaere et al., 2025) and P. vivax (smru1 clinical isolate, Zhu et al. 2016) gene expression patterns over the IDC (asexual blood stages).
+# Script to generate a Shiny App for investigation of P. knowlesi (A1-H.1; De Meulenaere et al., 2025) and P. vivax (smru1 clinical isolate; Zhu et al., 2016) gene expression patterns over the IDC (asexual blood stages).
 # In the first tab of the App, a Pv/Pk gene is entered, the ortholog(s) are searched, and an expression plot for the input gene + ortholog(s) is given together with similarity statistics of the expression patterns.
 # In the second tab of the App, up to 4 Pk/Pv genes are entered, and one expression plot is given for all input genes together.
+
+# To launch the App, do:
+# library(shiny)
+# runApp("path/Pk_Pv_comparator") #app.R is stored in /Pk_Pv_comparator directory.
 
 
 #### Load packages ####
 
-library(ggplot2)
-library(gridExtra)
+library(shiny) #v1.9.1
+library(ggplot2) #v3.5.2
+library(gridExtra) #v2.3
+# R version 4.3.0
 
 #### Import dataframes ####
 
@@ -419,6 +425,8 @@ UI <- fluidPage(
                     <br>
                     <p>This tab contains additional information on how data was obtained and processed.</p>
 
+                    <p>The code of this shiny app can be found on: XXX ENTER GITHUB LINK XXX</p>
+
                     <p><b>For more methodological details, see:</b><br>
                     De Meulenaere et al., 2025, XXX. doi: XXX.</p>
 
@@ -505,7 +513,7 @@ UI <- fluidPage(
 
                     <br><br>
                     
-                    <p>This app collects anonymous usage statistics (number of sessions and plots generated) to improve functionality. No personal data is stored.</p>
+                    <p>-- This app collects anonymous usage statistics (counts number of sessions and plots generated) to improve functionality. No personal data or gene input data is stored. --</p>
                   "),
                       
                       br(), br()
@@ -720,6 +728,7 @@ Server <- function(input, output, session) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
 
 
 
