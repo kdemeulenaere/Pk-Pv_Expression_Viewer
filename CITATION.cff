@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this App, its code, or the data files, please cite it as below."
+title: "Paper_title"
+authors:
+  - family-names: "De Meulenaere"
+    given-names: "Katlijn"
+    orcid: "https://orcid.org/0000-0003-0723-9009"
+  - family-names: "Diaz-Delgado"
+    given-names: "Dalia"
+doi: "xxx"
