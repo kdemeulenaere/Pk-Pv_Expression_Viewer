@@ -10,37 +10,37 @@
 # library(shiny)
 # runApp("path/Pk_Pv_comparator") #app.R is stored in /Pk_Pv_comparator directory.
 
+#     ! part with user statistics on server cannot run on server: that part of the code is absent on server version ! (lines 41, 515, 540)
+
 
 #### Load packages ####
 
 library(shiny) #v1.9.1
 library(ggplot2) #v3.5.2
 library(gridExtra) #v2.3
+library(cowplot) #v1.1.3
 # R version 4.3.0
 
 #### Import dataframes ####
 
-setwd("path_to_datasets")
-
-Pk_expr <- read.delim("Pk_expr.txt", check.names = FALSE)
-Pv_expr <- read.delim("Pv_expr.txt", check.names = FALSE)
+Pk_expr <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pk_expr.txt", check.names = FALSE)
+Pv_expr <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pv_expr.txt", check.names = FALSE)
 #Expression of all gene ID's that passed filtering (expression: TPM, log2 with pseudocount +1, Z-scored)). Genes without ortholog are present.
 
-sim <- read.delim("sim.txt")
+sim <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/sim.txt")
 #orthologous gene ID's (that passed filtering) with their similarity stats: dtw, time distance, outcome (sim/dissim)
 
-ortho <- read.delim("ortho.txt")
+ortho <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/ortho.txt")
 #orthologous gene ID's (no filtering applied)
 
-Pk_unfiltered <- read.delim("Pk_unfiltered.txt")
-Pv_unfiltered <- read.delim("Pv_unfiltered.txt")
+Pk_unfiltered <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pk_unfiltered.txt")
+Pv_unfiltered <- read.delim("C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/datasets/resulting_datasets/Pv_unfiltered.txt")
 #dataframe with all Pv/Pk genes, and whether they pass the filtering rules.
 
 
 #### User stats directory ####
-setwd("path_to_counter_file")
-counter_file_dir <- "usage_counters.rds"
-
+counter_file_dir <- "C:/Users/katli/ITG/Postdoc_Katlijn - Documenten/Projects/Pk timeseries/Rshiny/Pk_Pv_comparator/usage_counters.rds"
+#doesn't work with user stats on server now...
 
 #### Helper functions ####
 
@@ -424,7 +424,7 @@ UI <- fluidPage(
                       HTML("
                     <br>
                     <p>This tab contains additional information on how data was obtained and processed.</p>
-
+                    
                     <p>The code of this shiny app can be found on: XXX ENTER GITHUB LINK XXX</p>
 
                     <p><b>For more methodological details, see:</b><br>
@@ -510,14 +510,14 @@ UI <- fluidPage(
                       <li><b>DTW:</b> dynamic time warping</li>
                       <li><b>PCHIP:</b> Piecewise Cubic Hermite Interpolating Polynomial</li>
                     </ul>
-
+                    
                     <br><br>
                     
                     <p>-- This app collects anonymous usage statistics (counts number of sessions and plots generated) to improve functionality. No personal data or gene input data is stored. --</p>
                   "),
                       
                       br(), br()
-               )
+               ) #user stats don't work on server now... Last sentence on anonymous data is deleted there.
              )
     )
   ),
@@ -538,7 +538,7 @@ UI <- fluidPage(
 #### 2. Server function ####
 Server <- function(input, output, session) {
   
-  # ==== User data ====
+  # ==== User data ==== #doesn't work with user stats on server now... This chunk is deleted there
   isolate({
     counters <- readRDS(counter_file_dir)
     counters$total_sessions <- counters$total_sessions + 1
@@ -728,7 +728,3 @@ Server <- function(input, output, session) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
-
-
-
-
