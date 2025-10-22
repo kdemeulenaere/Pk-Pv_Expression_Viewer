@@ -419,7 +419,7 @@ UI <- fluidPage(
                     <br>
                     <p>This tab contains additional information on how data was obtained and processed.</p>
 
-                    <p>The code for this Shiny App can be found on: XXX ENTER GITHUB LINK XXX</p>
+                    <p>The code for this Shiny App can be found on this Github repository: https://github.com/kdemeulenaere/Pk-Pv_Expression_Viewer.</p>
 
                     <p><b>For more methodological details, see:</b><br>
                     De Meulenaere et al., 2025, XXX. doi: XXX.</p>
@@ -433,7 +433,7 @@ UI <- fluidPage(
                     <h4 class='section-title'>Plot:</h4>
                     <ul>
                       <li><b>Data:</b> Transcriptome data was collected at 5 (<i>P. knowlesi</i>) or 7 (<i>P. vivax</i>) time points of the IDC. These time points are shown as dots. In between those collected time points, expression was estimated by interpolation (PCHIP). This interpolated data is shown as a line. No data is shown between time point 0 and the first sampled time point because no interpolation is possible here.</li>
-                      <li><b>X-axis:</b> Expressed in relative time, since <i>P. knowlesi</i> A1-H.1 has a 27-hour IDC and <i>P. vivax</i> a 48-hour IDC. Full IDC length was normalised to a range of 0–1 (<i>P. knowlesi:</i> /27; <i>P. vivax:</i> /48).
+                      <li><b>X-axis:</b> Expressed in relative time, since <i>P. knowlesi</i> A1-H.1 has a 27-hour IDC and <i>P. vivax</i> a 48-hour IDC. Full IDC length was normalised to a 0–1 scale (<i>P. knowlesi:</i> /27; <i>P. vivax:</i> /48).
                       <div style='display: flex; gap: 30px; margin-top: 8px; margin-bottom: 8px;'>
                           <div>
                             <table style='border-collapse: collapse; font-size: 0.9em; color: gray; margin-top: 4px;'>
@@ -442,7 +442,7 @@ UI <- fluidPage(
                                   <i>P. knowlesi</i></th>
                               </tr>
                               <tr>
-                                <th style='text-align: left; padding: 4px 12px;'>Developmental time (hpi)</th>
+                                <th style='text-align: left; padding: 4px 12px;'>IDC time (hpi)</th>
                                 <th style='text-align: left; padding: 4px 12px;'>Relative time</th>
                               </tr>
                               <tr><td style='padding: 4px 12px;'>5</td><td style='padding: 4px 12px;'>0.185</td></tr>
@@ -459,7 +459,7 @@ UI <- fluidPage(
                                 <i>P. vivax</i>
                               </tr>
                               <tr>
-                                <th style='text-align: left; padding: 4px 12px;'>Developmental time (hpi)</th>
+                                <th style='text-align: left; padding: 4px 12px;'>IDC time (hpi)</th>
                                 <th style='text-align: left; padding: 4px 12px;'>Relative time</th>
                               </tr>
                               <tr><td style='padding: 4px 12px;'>6</td><td style='padding: 4px 12px;'>0.125</td></tr>
@@ -482,8 +482,8 @@ UI <- fluidPage(
                     <ul>
                       <li><b>Orthologue ID:</b> A protein BLAST from <i>P. vivax</i> to <i>P. knowlesi</i> was carried out under the default settings. BLAST-resulting protein pairs with a % identity >=45% and with >=50% of the query protein aligned to its hit protein, were considered orthologues.<br>
                       <small style='color: gray;'>For ApiAP2 transcription factors, ApiAP2 genes with shared PlasmoDB gene names, a PlasmoDB OrthoMCL synteny hit or an indicated orthology in Jeninga et al. (2019, doi: 10.3390/pathogens8020047) were considered orthologues as well, in case there was no hit among the BLAST-based orthologue list.</small></li>
-                      <li><b>Dynamic time warping score</b> Dynamic time warping (DTW; Sakoe-Chiba window type and phase shift of 0.2 relative time units allowed) was applied to the expression levels over the time interval that was sampled in both species (relative time 0.185 – 1). The lower the score, the more similar the orthologue expression profiles are.</li>
-                      <li><b>Time distance between maxima:</b> The distance (in relative time units) between the time points of maximal expression of both orthologues. Circularity of the IDC is taken into account (for example, the time distance between relative times 0.9 and 0.1 would be 0.2).</li>
+                      <li><b>Dynamic time warping score</b> Dynamic time warping (DTW; Sakoe-Chiba window type and temporal shift of 0.2 relative time units allowed) was applied to the expression levels over the time interval that was sampled in both species (relative time 0.185 – 1). The lower the score, the more similar the orthologue expression profiles are.</li>
+                      <li><b>Time shift between maxima:</b> The difference (in relative time units) between the time points of maximal expression of both orthologues. Circularity of the IDC is taken into account (for example, the time difference between relative times 0.9 and 0.1 would be 0.2).</li>
                       <li><b>Classification:</b> Expression patterns of orthologous gene pairs were classified as similar or dissimilar, based on the DTW score and time distance between the maxima. A full explanation can be found in Figure 3 of De Meulenaere et al. (2025).</li>
                     </ul>
 
@@ -588,7 +588,7 @@ Server <- function(input, output) {
         tags$h4("Orthologue summary"),
         tags$p(strong("Orthologue ID: "), dd$gene),
         tags$p(strong("Dynamic time warping score: "), round(dd$dtw, 3)),
-        tags$p(strong("Time distance between maxima: "), dd$distance),
+        tags$p(strong("Time shift between maxima: "), dd$distance),
         tags$p(strong("Classification: "), dd$outcome),
         downloadButton(download_id, "Download plot")
       )
