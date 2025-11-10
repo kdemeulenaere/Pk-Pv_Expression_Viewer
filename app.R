@@ -26,7 +26,7 @@ Pv_expr <- read.delim("./datasets/Pv_expr.txt", check.names = FALSE)
 #Expression of all gene ID's that passed filtering (expression: TPM, log2 with a pseudocount of 1, Z-scored)). Genes without orthologue are present.
 
 sim <- read.delim("./datasets/sim.txt")
-#orthologous gene ID's (that passed filtering) with their similarity stats: dtw, time distance, outcome (sim/dissim)
+#orthologous gene ID's (that passed filtering) with their similarity stats: dtw, time shift, outcome (sim/dissim)
 
 ortho <- read.delim("./datasets/ortho.txt")
 #orthologous gene ID's (no filtering applied)
@@ -179,14 +179,14 @@ make_plot <- function(results, add_citation = FALSE) {
   p<-ggplot(df_expr, aes(x = reltime, y = values, group = gene)) +
     geom_line(aes(color = gene), linewidth = 0.8) +
     geom_point(data = df_sampled, aes(x = reltime, y = values, color = gene), size = 2) +
-    geom_vline(data = df_max, aes(xintercept = reltime_offset, color = gene, linetype = "maximal expression of gene"),
+    geom_vline(data = df_max, aes(xintercept = reltime_offset, color = gene, linetype = "peak expression time point"),
                linewidth = 1, show.legend = c(color = FALSE)) +
     scale_x_continuous(limits = c(0, 1.01)) + #>1 for the potential offsets
     scale_color_manual(
       values = c("#D81B60", "#1E88E5", "#FFC107", "#004D40")) +
     scale_linetype_manual(
       name = NULL,
-      values = c("maximal expression of gene" = "dotted")) +
+      values = c("peak expression time point" = "dotted")) +
     guides(color = guide_legend(
       order = 1,
       override.aes = list(
@@ -213,6 +213,7 @@ make_plot <- function(results, add_citation = FALSE) {
   # Optionally add citation (in case figure is downloaded)
   if (add_citation) {
     citation <- cowplot::ggdraw() +
+      theme(plot.background = element_rect(fill = "white", color = NA)) +
       cowplot::draw_label(
         "De Meulenaere et al., 2025, XXX. doi: XXX.",
         x = 0, y = 0.5, hjust = 0, vjust = 0.5,
@@ -474,8 +475,8 @@ UI <- fluidPage(
                         </div>
                         </li>
                       <li><b>Y-axis:</b> Transcript counts were TPM-normalised, log<sub>2</sub>-transformed (with a pseudocount of 1), then Z-scored (to compare between <i>P. knowlesi</i> and <i>P. vivax</i>).</li>
-                      <li><b>Dotted vertical line:</b> Indicates the time point of maximal gene expression.<br>
-                      <small style='color: gray;'>If multiple genes have the same time point of maximal gene expression, the dotted vertical lines are slightly shifted to prevent an overlap.</small></li>
+                      <li><b>Dotted vertical line:</b> Indicates the time point of peak expression (maximal gene expression).<br>
+                      <small style='color: gray;'>If multiple genes have the same peak expression time point, the dotted vertical lines are slightly shifted to prevent an overlap.</small></li>
                     </ul>
 
                     <h4 class='section-title'>Orthologue summary (in Orthologue Expression Viewer):</h4>
@@ -483,8 +484,8 @@ UI <- fluidPage(
                       <li><b>Orthologue ID:</b> A protein BLAST from <i>P. vivax</i> to <i>P. knowlesi</i> was carried out under the default settings. BLAST-resulting protein pairs with a % identity >=45% and with >=50% of the query protein aligned to its hit protein, were considered orthologues.<br>
                       <small style='color: gray;'>For ApiAP2 transcription factors, ApiAP2 genes with shared PlasmoDB gene names, a PlasmoDB OrthoMCL synteny hit or an indicated orthology in Jeninga et al. (2019, doi: 10.3390/pathogens8020047) were considered orthologues as well, in case there was no hit among the BLAST-based orthologue list.</small></li>
                       <li><b>Dynamic time warping score</b> Dynamic time warping (DTW; Sakoe-Chiba window type and temporal shift of 0.2 relative time units allowed) was applied to the expression levels over the time interval that was sampled in both species (relative time 0.185 – 1). The lower the score, the more similar the orthologue expression profiles are.</li>
-                      <li><b>Time shift between maxima:</b> The difference (in relative time units) between the time points of maximal expression of both orthologues. Circularity of the IDC is taken into account (for example, the time difference between relative times 0.9 and 0.1 would be 0.2).</li>
-                      <li><b>Classification:</b> Expression patterns of orthologous gene pairs were classified as similar or dissimilar, based on the DTW score and time distance between the maxima. A full explanation can be found in Figure 3 of De Meulenaere et al. (2025).</li>
+                      <li><b>Time shift between maxima:</b> The difference (in relative time units) between the peak expression time points (maximal expression) of both orthologues. Circularity of the IDC is taken into account (for example, the time difference between relative times 0.9 and 0.1 would be 0.2).</li>
+                      <li><b>Classification:</b> Expression patterns of orthologous gene pairs were classified as similar or dissimilar, based on the DTW score and time shift between the maxima. A full explanation can be found in Figure 3 of De Meulenaere et al. (2025).</li>
                     </ul>
 
                     <h4 class='section-title'>Warnings:</h4>
