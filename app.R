@@ -474,7 +474,8 @@ UI <- fluidPage(
                           </div>
                         </div>
                         </li>
-                      <li><b>Y-axis:</b> Transcript counts were TPM-normalised, log<sub>2</sub>-transformed (with a pseudocount of 1), then Z-scored (to compare between <i>P. knowlesi</i> and <i>P. vivax</i>).</li>
+                      <li><b>Y-axis:</b> Transcript counts were TPM-normalised, log<sub>2</sub>-transformed (with a pseudocount of 1), then Z-scored (different genes can be shown on the same y-axis range).</li>
+                      <small style='color: gray;'>Transcriptional TIMING can be compared between genes, expression LEVELS have no meaning due to Z-scoring. <i>P. knowlesi</i> expression levels (TPM-normalised) can be found in Supplementary file S1 of De Meulenaere et al. (2026).</small></li>
                       <li><b>Dotted vertical line:</b> Indicates the time point of peak expression (maximal gene expression).<br>
                       <small style='color: gray;'>If multiple genes have the same peak expression time point, the dotted vertical lines are slightly shifted to prevent an overlap.</small></li>
                     </ul>
@@ -681,6 +682,7 @@ Server <- function(input, output) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
 
 
 
