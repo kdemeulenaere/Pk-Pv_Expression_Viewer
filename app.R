@@ -2,7 +2,7 @@
 
 # Author: Katlijn De Meulenaere
 
-# Script to generate a Shiny App for investigation of P. knowlesi (A1-H.1; De Meulenaere et al., 2025) and P. vivax (smru1 clinical isolate; Zhu et al., 2016) gene expression patterns over the IDC (asexual blood stages).
+# Script to generate a Shiny App for investigation of P. knowlesi (A1-H.1; De Meulenaere et al., 2026) and P. vivax (smru1 clinical isolate; Zhu et al., 2016) gene expression patterns over the IDC (asexual blood stages).
 # In the first tab of the App, a Pv/Pk gene is entered, the orthologue(s) are searched, and an expression plot for the input gene + orthologue(s) is given together with similarity statistics of the expression patterns.
 # In the second tab of the App, up to 4 Pk/Pv genes are entered, and one expression plot is given for all input genes together.
 
@@ -215,7 +215,7 @@ make_plot <- function(results, add_citation = FALSE) {
     citation <- cowplot::ggdraw() +
       theme(plot.background = element_rect(fill = "white", color = NA)) +
       cowplot::draw_label(
-        "De Meulenaere et al., 2025, XXX. doi: XXX.",
+        "De Meulenaere et al., 2026, XXX. doi: XXX.",
         x = 0, y = 0.5, hjust = 0, vjust = 0.5,
         size = 10, color = "gray40"
       )
@@ -423,11 +423,11 @@ UI <- fluidPage(
                     <p>The code for this Shiny App can be found on this Github repository: https://github.com/kdemeulenaere/Pk-Pv_Expression_Viewer.</p>
 
                     <p><b>For more methodological details, see:</b><br>
-                    De Meulenaere et al., 2025, XXX. doi: XXX.</p>
+                    De Meulenaere et al., 2026, XXX. doi: XXX.</p>
 
                     <h4 class='section-title'>Sample and data origins:</h4>
                     <ul>
-                      <li><b><i>P. knowlesi</i>:</b> De Meulenaere et al., 2025, XXX. doi: XXX. Line A1-H.1 was synchronised and collected at 5 IDC time points (5, 14, 20, 24, 27 hpi). This line was grown <i>in vitro</i> in human erythrocytes, and does not produce gametocytes. The 5 hpi time point can show minor schizont contamination.</li>
+                      <li><b><i>P. knowlesi</i>:</b> De Meulenaere et al., 2026, XXX. doi: XXX. Line A1-H.1 was synchronised and collected at 5 IDC time points (5, 14, 20, 24, 27 hpi). This line was grown <i>in vitro</i> in human erythrocytes, and does not produce gametocytes. The 5 hpi time point can show minor schizont contamination.</li>
                       <li><b><i>P. vivax</i>:</b> Zhu et al., 2016, Scientific reports. doi: 10.1038/srep20498. Clinical isolate smru1 contained mainly ring stages, was then matured <i>ex vivo</i>, and collected at 7 IDC time points (6, 18, 24, 30, 36, 42, 48 hpi). Since smru1 originates from a patient, it contains gametocytes.</li>
                     </ul>
 
@@ -486,7 +486,7 @@ UI <- fluidPage(
                       <small style='color: gray;'>For ApiAP2 transcription factors, ApiAP2 genes with shared PlasmoDB gene names, a PlasmoDB OrthoMCL synteny hit or an indicated orthology in Jeninga et al. (2019, doi: 10.3390/pathogens8020047) were considered orthologues as well, in case there was no hit among the BLAST-based orthologue list.</small></li>
                       <li><b>Dynamic time warping score</b> Dynamic time warping (DTW; Sakoe-Chiba window type and temporal shift of 0.2 relative time units allowed) was applied to the expression levels over the time interval that was sampled in both species (relative time 0.185 – 1). The lower the score, the more similar the orthologue expression profiles are.</li>
                       <li><b>Time shift between maxima:</b> The difference (in relative time units) between the peak expression time points (maximal expression) of both orthologues. Circularity of the IDC is taken into account (for example, the time difference between relative times 0.9 and 0.1 would be 0.2).</li>
-                      <li><b>Classification:</b> Expression patterns of orthologous gene pairs were classified as similar or dissimilar, based on the DTW score and time shift between the maxima. A full explanation can be found in Figure 3 of De Meulenaere et al. (2025).</li>
+                      <li><b>Classification:</b> Expression patterns of orthologous gene pairs were classified as similar or dissimilar, based on the DTW score and time shift between the maxima. A full explanation can be found in Figure 2 of De Meulenaere et al. (2026).</li>
                     </ul>
 
                     <h4 class='section-title'>Warnings:</h4>
@@ -518,7 +518,7 @@ UI <- fluidPage(
   div(
     id = "app-footer",
     div(
-      "If you use this tool, please cite: De Meulenaere et al., 2025, XXX. doi: XXX.",
+      "If you use this tool, please cite: De Meulenaere et al., 2026, XXX. doi: XXX.",
       style = "font-size: 0.9em; color: gray; text-align: center;
                position: fixed; bottom: 0; left: 0; width: 100%;
                background: white; padding: 5px 0; z-index: 1000;
@@ -682,6 +682,7 @@ Server <- function(input, output) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
+
 
 
 
