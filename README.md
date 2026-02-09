@@ -1,6 +1,6 @@
 # '*P. knowlesi* - *P. vivax* Expression Viewer' shiny App
 
-`app.R` contains the R code to produce a Shiny App in which expression patterns of *P. knowlesi* A1-H.1 (De Meulenaere et al., 2026) and *P. vivax* ([Zhu et al., 2016](https://doi.org/10.1038/srep20498)) genes can be visualised over the asexual blood stages: the '*P. knowlesi* - *P. vivax* Expression Viewer' (available [here](https://interactive.itg.be/app/mal-pk-pv-expression-viewer)).
+`app.R` contains the R code to produce a Shiny App in which expression patterns of *P. knowlesi* A1-H.1 (De Meulenaere et al., 2026) and *P. vivax* ([Zhu et al., 2016](https://doi.org/10.1038/srep20498)) genes can be visualised over the asexual blood stages: the ['*P. knowlesi* - *P. vivax* Expression Viewer'](https://interactive.itg.be/app/mal-pk-pv-expression-viewer).
 
 The directory `/datasets` contains all datasets used in the script:
 - `Pk_expr.txt`: *P. knowlesi* A1-H.1 (De Meulenaere et al., 2026) expression of the 5 sampled time points, and all interpolated time points.
