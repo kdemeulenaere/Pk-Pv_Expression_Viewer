@@ -19,6 +19,7 @@ library(gridExtra) #v2.3
 library(cowplot) #v1.1.3
 # R version 4.3.0
 
+
 #### Import dataframes ####
 
 Pk_expr <- read.delim("./datasets/Pk_expr.txt", check.names = FALSE)
@@ -215,7 +216,7 @@ make_plot <- function(results, add_citation = FALSE) {
     citation <- cowplot::ggdraw() +
       theme(plot.background = element_rect(fill = "white", color = NA)) +
       cowplot::draw_label(
-        "De Meulenaere et al., 2026, XXX. doi: XXX.",
+        "De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036.",
         x = 0, y = 0.5, hjust = 0, vjust = 0.5,
         size = 10, color = "gray40"
       )
@@ -423,11 +424,11 @@ UI <- fluidPage(
                     <p>The code for this Shiny App can be found on this Github repository: https://github.com/kdemeulenaere/Pk-Pv_Expression_Viewer.</p>
 
                     <p><b>For more methodological details, see:</b><br>
-                    De Meulenaere et al., 2026, XXX. doi: XXX.</p>
+                    De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036.</p>
 
                     <h4 class='section-title'>Sample and data origins:</h4>
                     <ul>
-                      <li><b><i>P. knowlesi</i>:</b> De Meulenaere et al., 2026, XXX. doi: XXX. Line A1-H.1 was synchronised and collected at 5 IDC time points (5, 14, 20, 24, 27 hpi). This line was grown <i>in vitro</i> in human erythrocytes, and does not produce gametocytes. The 5 hpi time point can show minor schizont contamination.</li>
+                      <li><b><i>P. knowlesi</i>:</b> De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036. Line A1-H.1 was synchronised and collected at 5 IDC time points (5, 14, 20, 24, 27 hpi). This line was grown <i>in vitro</i> in human erythrocytes, and does not produce gametocytes. The 5 hpi time point can show minor schizont contamination.</li>
                       <li><b><i>P. vivax</i>:</b> Zhu et al., 2016, Scientific reports. doi: 10.1038/srep20498. Clinical isolate smru1 contained mainly ring stages, was then matured <i>ex vivo</i>, and collected at 7 IDC time points (6, 18, 24, 30, 36, 42, 48 hpi). Since smru1 originates from a patient, it contains gametocytes.</li>
                     </ul>
 
@@ -491,7 +492,7 @@ UI <- fluidPage(
 
                     <h4 class='section-title'>Warnings:</h4>
                     <ul>
-                      <li><b>Gene has too low transcriptional variation over IDC (log<sub>2</sub> fold change between highest and lowest normalised expression level &lt; 0.5)</b>: genes with low transcriptional variation are not suitable for Z-scoring (used for the y-axis and orthologue comparison statistics), as this artificially amplifies minor fluctuations in expression levels. Transcriptional variation was quantified as the fold change between the minimal and maximal expression levels (pseudocount of 1).</li>
+                      <li><b>Gene has too low transcriptional variation over IDC (log<sub>2</sub> fold change between highest and lowest normalised expression level &lt; 0.5)</b>: genes with low transcriptional variation are not suitable for Z-scoring (used for the y-axis and orthologue comparison statistics), as this artificially amplifies minor fluctuations in expression levels. Transcriptional variation was quantified as the log<sub>2</sub> fold change between the minimal and maximal expression level (pseudocount of 1).</li>
                       <li><b>Gene has too low expression (sum of normalised expression levels of sampled time points &lt; 0.5)</b>: genes with virtually no expression are not shown.</li>
                       <li><b>The input gene has multiple orthologues:</b> when multiple orthologues are found for a single input gene ID, a plot and orthologue summary is generated for each of them.</li>
                       <li><b>Unrecognised gene ID (must start with PVP01_... or PKNH_...):</b> the gene ID is not from the correct reference genome, or the prefix was entered incorrectly (<i>e.g.</i> should be uppercase).</li>
@@ -518,7 +519,7 @@ UI <- fluidPage(
   div(
     id = "app-footer",
     div(
-      "If you use this tool, please cite: De Meulenaere et al., 2026, XXX. doi: XXX.",
+      "If you use this tool, please cite: De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036.",
       style = "font-size: 0.9em; color: gray; text-align: center;
                position: fixed; bottom: 0; left: 0; width: 100%;
                background: white; padding: 5px 0; z-index: 1000;
@@ -682,9 +683,3 @@ Server <- function(input, output) {
 
 #### 3. Call to shinyApp function ####
 shinyApp(ui = UI, server = Server)
-
-
-
-
-
-
