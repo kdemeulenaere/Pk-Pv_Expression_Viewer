@@ -1,9 +1,9 @@
 # '*P. knowlesi* - *P. vivax* Expression Viewer' shiny App
 
-`app.R` contains the R code to produce a Shiny App in which expression patterns of *P. knowlesi* A1-H.1 (De Meulenaere et al., 2026) and *P. vivax* ([Zhu et al., 2016](https://doi.org/10.1038/srep20498)) genes can be visualised over the asexual blood stages: the ['*P. knowlesi* - *P. vivax* Expression Viewer' web tool](https://interactive.itg.be/app/mal-pk-pv-expression-viewer).
+`app.R` contains the R code to produce a Shiny App in which expression patterns of *P. knowlesi* A1-H.1 ([De Meulenaere et al., 2026](https://doi.org/10.64898/2026.02.09.704036)) and *P. vivax* ([Zhu et al., 2016](https://doi.org/10.1038/srep20498)) genes can be visualised over the asexual blood stages: the ['*P. knowlesi* - *P. vivax* Expression Viewer' web tool](https://interactive.itg.be/app/mal-pk-pv-expression-viewer).
 
 The directory `/datasets` contains all datasets used in the script:
-- `Pk_expr.txt`: *P. knowlesi* A1-H.1 (De Meulenaere et al., 2026) expression of the 5 sampled time points, and all interpolated time points.
+- `Pk_expr.txt`: *P. knowlesi* A1-H.1 ([De Meulenaere et al., 2026](https://doi.org/10.64898/2026.02.09.704036)) expression of the 5 sampled time points, and all interpolated time points.
 - `Pv_expr.txt`: *P. vivax* smru1 ([Zhu et al., 2016](https://doi.org/10.1038/srep20498)) expression of the 7 sampled time points, and all interpolated time points.
 - `Pk_unfiltered.txt`: all *P. knowlesi* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels).
 - `Pv_unfiltered.txt`: all *P. vivax* genes, and whether they passed filtering or not (sufficient transcriptional variation over the IDC, sufficient expression levels).
@@ -14,6 +14,6 @@ The '*P. knowlesi* - *P. vivax* Expression Viewer' App can be accessed [here](ht
 - In the first tab of the App, a *P. vivax/P. knowlesi* gene is entered, the ortholog(s) are searched, and an expression plot for the input gene + ortholog(s) is given together with similarity statistics of the expression patterns.
 - In the second tab of the App, up to 4 *P. knowlesi/P. vivax* genes are entered, and one expression plot is given for all input genes together.
 
-**If you use the App, code, or *P. knowlesi* datasets, please cite: De Meulenaere et al., 2026, XXX. doi: XXX.** (yet unpublished)
+**If you use the App, code, or *P. knowlesi* datasets, please cite: [De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036](https://doi.org/10.64898/2026.02.09.704036).**
 
 This is a project from [ITMmalaria](https://github.com/ITMmalaria).
