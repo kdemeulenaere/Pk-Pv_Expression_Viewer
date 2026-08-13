@@ -39,7 +39,7 @@ ortho_PkPf <- read.delim("./datasets/ortho_PkPf.txt")
 Pk_unfiltered <- read.delim("./datasets/Pk_unfiltered.txt")
 Pv_unfiltered <- read.delim("./datasets/Pv_unfiltered.txt")
 Pf_unfiltered <- read.delim("./datasets/Pf_unfiltered.txt")
-#dataframe with all Pv/Pk genes, and whether they pass the filtering rules.
+#all genes, and whether they pass the filtering rules.
 
 
 #later, for web version:
