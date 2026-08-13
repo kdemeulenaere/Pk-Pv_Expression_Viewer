@@ -9,7 +9,7 @@
 
 # To launch the App, do:
 # library(shiny)
-# runApp("path/Pk_comparator") #app.R is stored in /Pk_comparator directory.
+# runApp("path/Pk_Orthologue_Exression_Viewer") #app.R is stored in /Pk_Orthologue_Exression_Viewer directory.
 
 
 #### Load packages ####
