@@ -747,7 +747,7 @@ UI <- fluidPage(
   div(
     id = "app-footer",
     div(
-      HTML("<span style='margin-right: 4em;'>v2</span>If you use this tool, please cite: De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036."),
+      HTML("<span style='margin-right: 4em;'>v2.0</span>If you use this tool, please cite: De Meulenaere et al., 2026, doi: 10.64898/2026.02.09.704036."),
       style = "font-size: 0.9em; color: gray; text-align: left;
                position: fixed; bottom: 0; left: 0; width: 100%;
                background: white; padding: 5px 20px; z-index: 1000;
